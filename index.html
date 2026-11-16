@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff2f6">
   <title>Indi, tengo una propuesta 💌</title>
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     :root {
       font-family: "Segoe UI", sans-serif;
@@ -19,7 +22,7 @@
       min-height: 100svh;
       display: grid;
       place-items: center;
-      padding: 24px 16px;
+      padding: 28px 16px;
       background:
         radial-gradient(circle at 15% 15%, #ffd6e6, transparent 40%),
         radial-gradient(circle at 90% 90%, #efdfff, transparent 40%),
@@ -28,9 +31,9 @@
 
     .card {
       width: min(100%, 500px);
-      padding: 38px 24px 24px;
+      padding: 38px 26px 26px;
       text-align: center;
-      background: #ffffffd9;
+      background: #ffffffeb;
       border: 1px solid white;
       border-radius: 32px;
       box-shadow: 0 24px 80px #b4567b20;
@@ -41,14 +44,14 @@
     .label {
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 3px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: #b47490;
+      color: #a56380;
     }
 
     .emoji {
       font-size: 70px;
-      margin: 22px 0 12px;
+      margin: 24px 0 16px;
       animation: float 3s ease-in-out infinite;
     }
 
@@ -56,15 +59,19 @@
       font-family: Georgia, serif;
       font-weight: 500;
       font-size: clamp(32px, 8vw, 44px);
-      line-height: 1.12;
-      margin: 14px 0;
+      line-height: 1.15;
+      margin: 16px 0;
       color: #a43665;
+    }
+
+    h1:focus {
+      outline: none;
     }
 
     p {
       font-size: 16px;
       line-height: 1.7;
-      margin: 16px 0;
+      margin: 18px 0;
     }
 
     .date {
@@ -72,9 +79,10 @@
       background: #fff0f5;
       border: 1px solid #f5d5e2;
       border-radius: 16px;
-      padding: 12px 20px;
-      margin: 10px 0;
+      padding: 14px 22px;
+      margin: 8px 0;
       font-size: 14px;
+      line-height: 1.6;
     }
 
     .date strong {
@@ -83,70 +91,79 @@
       color: #a43665;
     }
 
-    .arena {
-      height: 155px;
-      position: relative;
-      margin-top: 12px;
+    .buttons {
+      display: grid;
+      justify-items: center;
+      gap: 12px;
+      margin: 24px 0 18px;
     }
 
     button {
+      max-width: 100%;
       border: 0;
       font: inherit;
-      font-weight: 700;
+      font-weight: 600;
       border-radius: 999px;
-      padding: 15px 22px;
+      padding: 15px 24px;
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
       touch-action: manipulation;
+      transition: transform .2s, background .2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
     }
 
     button:focus-visible,
-    a:focus-visible {
+    input:focus-visible {
       outline: 3px solid #a43665;
-      outline-offset: 5px;
+      outline-offset: 4px;
     }
 
-    #yes {
-      position: absolute;
-      top: 12px;
-      left: 50%;
-      transform: translateX(-50%);
+    button:disabled {
+      opacity: .65;
+      cursor: wait;
+      transform: none;
+    }
+
+    .primary {
       color: white;
       background: #d94d87;
-      box-shadow: 0 8px 24px #d94d8735;
-      white-space: nowrap;
-      transition: background .2s;
+      box-shadow: 0 8px 24px #d94d8730;
     }
 
-    #yes:hover { background: #be356e; }
+    .primary:hover {
+      background: #be356e;
+    }
 
-    #no {
-      position: absolute;
-      top: 82px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: #996079;
+    .secondary {
+      color: #89526b;
       background: #f6eaf0;
-      white-space: nowrap;
-      font-size: 13px;
-      max-width: 100%;
+      font-size: 14px;
     }
 
-    .hint {
+    .back {
+      background: transparent;
+      color: #996079;
+      font-size: 13px;
+      margin-top: 14px;
+      padding: 10px 16px;
+    }
+
+    .hint,
+    .footer {
       font-size: 12px;
-      color: #b18396;
-      min-height: 36px;
-      margin: 0;
+      color: #9c7084;
+      line-height: 1.7;
     }
 
     .footer {
-      font-size: 12px;
-      color: #b18396;
       margin-top: 24px;
     }
 
     .ticket {
-      margin-top: 24px;
+      margin: 24px 0;
       padding: 22px 16px;
       border: 1px dashed #df9db8;
       background: #fff6fa;
@@ -155,15 +172,67 @@
 
     .ticket span {
       display: block;
-      font-size: 12px;
+      font-size: 11px;
       letter-spacing: 2px;
-      margin-bottom: 10px;
-      color: #b47490;
+      margin-bottom: 12px;
+      color: #a56380;
     }
 
     .ticket strong {
+      display: block;
       font-size: 20px;
+      line-height: 1.6;
       color: #a43665;
+      overflow-wrap: anywhere;
+    }
+
+    .ticket p {
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+
+    form {
+      display: grid;
+      gap: 12px;
+      margin-top: 26px;
+      text-align: left;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      min-width: 0;
+      min-height: 50px;
+      padding: 13px;
+      border: 1px solid #edc5d6;
+      border-radius: 14px;
+      background: #fff7fa;
+      color: #65384c;
+      font: inherit;
+      color-scheme: light;
+    }
+
+    form .primary {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .status {
+      margin: 18px 0 0;
+      padding: 12px;
+      background: #fff0f5;
+      border-radius: 12px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #89415f;
+    }
+
+    .status:empty {
+      display: none;
     }
 
     .heart {
@@ -174,10 +243,14 @@
       animation: fall linear forwards;
     }
 
-    [hidden] { display: none !important; }
+    [hidden] {
+      display: none !important;
+    }
 
     @keyframes float {
-      50% { transform: translateY(-9px) rotate(-4deg); }
+      50% {
+        transform: translateY(-9px) rotate(-4deg);
+      }
     }
 
     @keyframes fall {
@@ -198,55 +271,121 @@
 
 <body>
   <main class="card">
+
+    <!-- INVITACIÓN INICIAL -->
     <section id="invitation">
-      <div class="label">Una invitación para mi persona favorita</div>
+      <div class="label">Una preguntita para ti</div>
       <div class="emoji" aria-hidden="true">💌</div>
 
-      <h1>Indi, ¿me regalas<br>un ratito de tu jueves?</h1>
+      <h1 id="invitation-title" tabindex="-1">
+        Indi, ¿me regalas<br>
+        un ratito de tu jueves?
+      </h1>
 
       <p>
-        Me contaron que sales temprano del trabajo…<br>
-        y casualmente yo tengo muchas ganas de verte 🤭
+        Sé que sales temprano del trabajo…<br>
+        y yo tengo muchas ganas de verte 🤭
       </p>
 
       <div class="date">
         <strong>Jueves 19 de noviembre</strong>
-        Tú, yo y un plan bonito ✨
+        A las 7:00 p. m. · Paso por ti 💗
       </div>
 
-      <p>¿Salimos?</p>
-
-      <div class="arena" id="arena">
-        <button id="yes" type="button">Sí, vamos 💗</button>
-        <button id="no" type="button">No 🙃</button>
-      </div>
-
-      <p class="hint" id="hint" aria-live="polite">
-        El botón de abajo anda un poquito tímido…
+      <p>
+        Tú, yo y un plan bonito.<br>
+        ¿Salimos?
       </p>
 
-      <div class="footer">Hecho con ganas de verte sonreír 🌷</div>
+      <div class="buttons">
+        <button id="yes" class="primary" type="button">
+          Sí, vamos 💗
+        </button>
+
+        <button id="no" class="secondary" type="button">
+          Ese día no puedo 🥺
+        </button>
+      </div>
+
+      <p class="hint">
+        Si ese día no puedes, buscamos otro.
+        Mi agenda acepta negociaciones contigo 🤭
+      </p>
+
+      <p class="footer">
+        Hecho con ganas de verte sonreír 🌷
+      </p>
     </section>
 
-    <section id="accepted" hidden aria-labelledby="success-title">
-      <div class="label">Tenemos una cita</div>
-      <div class="emoji" aria-hidden="true">🌷</div>
+    <!-- PROPONER OTRA FECHA -->
+    <section id="alternative" hidden>
+      <div class="label">Busquemos nuestro momento</div>
+      <div class="emoji" aria-hidden="true">🗓️</div>
 
-      <h1 id="success-title" tabindex="-1">
-        Sabía que te iba<br>a encantar el plan 🤭
+      <h1 id="alternative-title" tabindex="-1">
+        Entonces…<br>
+        ¿cuándo te veo? 💗
       </h1>
 
       <p>
-        Perfecto, <strong>paso por ti a las 7 de la noche.</strong>
+        Tú propón el día y la hora.<br>
+        Las ganas de verte las pongo yo 🤭
+      </p>
+
+      <form id="date-form">
+        <label for="new-date">¿Qué día puedes?</label>
+        <input
+          id="new-date"
+          name="fecha"
+          type="date"
+          required
+        >
+
+        <label for="new-time">¿A qué hora?</label>
+        <input
+          id="new-time"
+          name="hora"
+          type="time"
+          required
+        >
+
+        <button id="submit-date" class="primary" type="submit">
+          Enviar mi propuesta 💌
+        </button>
+      </form>
+
+      <button id="back" class="back" type="button">
+        ← Volver a la invitación
+      </button>
+
+      <p class="hint">
+        Al enviarla, me llegará tu fecha y hora para coordinar 💗
+      </p>
+    </section>
+
+    <!-- ACEPTÓ EL JUEVES -->
+    <section id="accepted" hidden>
+      <div class="label">Tenemos una cita</div>
+      <div class="emoji" aria-hidden="true">🌷</div>
+
+      <h1 id="accepted-title" tabindex="-1">
+        Perfecto,<br>
+        ¡tenemos un plan! 🤭
+      </h1>
+
+      <p>
+        <strong>Paso por ti a las 7 de la noche.</strong>
       </p>
 
       <p>
-        Ponte bella… aunque esa parte ya la tienes resuelta 💗
+        Ponte bella…<br>
+        aunque esa parte ya la tienes resuelta 💗
       </p>
 
       <div class="ticket">
         <span>PLAN OFICIAL</span>
         <strong>Jueves 19/11 · 7:00 p. m.</strong>
+
         <p>
           Tú trae esa sonrisa que me gusta.<br>
           Yo me encargo del resto ✨
@@ -254,110 +393,287 @@
       </div>
 
       <p class="footer">
-        Mándame una captura para presumir que me dijiste que sí 😌
+        Tu respuesta ya fue enviada 💌<br>
+        Qué bonito saber que voy a verte.
       </p>
     </section>
+
+    <!-- ENVIÓ OTRA FECHA -->
+    <section id="proposed" hidden>
+      <div class="label">Propuesta enviada</div>
+      <div class="emoji" aria-hidden="true">💌</div>
+
+      <h1 id="proposed-title" tabindex="-1">
+        ¡Ya me llegó<br>
+        tu propuesta! 💗
+      </h1>
+
+      <p>
+        Gracias por hacerme un espacio en tu agenda.<br>
+        Coordinamos los detalles y armamos algo bonito 🤭
+      </p>
+
+      <div class="ticket">
+        <span>EL DÍA QUE ELEGISTE</span>
+        <strong id="chosen-date"></strong>
+      </div>
+
+      <p class="footer">
+        Tu propuesta quedó enviada.<br>
+        Ahora me toca organizar el plan 🌷
+      </p>
+    </section>
+
+    <p
+      id="status"
+      class="status"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    ></p>
+
+    <noscript>
+      <p>Activa JavaScript para responder a la invitación 💗</p>
+    </noscript>
+
   </main>
 
   <script>
-    const arena = document.getElementById("arena");
-    const no = document.getElementById("no");
-    const yes = document.getElementById("yes");
-    const hint = document.getElementById("hint");
+    /*
+      CONFIGURACIÓN
 
-    const phrases = [
-      "No 🙃",
-      "Uy, por aquí no 🏃‍♀️",
-      "Casi, casi 🤭",
-      "Me dio nervios 🙈",
-      "Error: falta un sí 💗",
-      "No me atrapas 😌",
-      "El rosadito se ve lindo 👀"
-    ];
+      Reemplaza TU_ID_AQUI por el ID de tu formulario.
 
-    const hints = [
-      "Creo que ese botón tiene otros planes 🤭",
-      "Prometo que yo no corro tanto como ese botón.",
-      "El «Sí» sigue ahí, muy tranquilo y disponible 💗",
-      "Indi vs. un botón con complejo de atleta 🏃‍♀️",
-      "Bueno, al menos ya hicimos cardio 😂"
-    ];
+      Ejemplo de formato:
+      https://formspree.io/f/abcdefgh
 
-    let attempts = 0;
-    let lastMove = 0;
+      No coloques aquí tu contraseña ni claves privadas.
+    */
+    const FORMSPREE_URL = "https://formspree.io/f/xaeoowyp";
 
-    function escapeButton(event) {
-      if (event) event.preventDefault();
+    const sections = {
+      invitation: document.getElementById("invitation"),
+      alternative: document.getElementById("alternative"),
+      accepted: document.getElementById("accepted"),
+      proposed: document.getElementById("proposed")
+    };
 
-      // Evita que varios eventos de un mismo toque lo muevan dos veces.
-      const now = performance.now();
-      if (now - lastMove < 100) return;
-      lastMove = now;
+    const yesButton = document.getElementById("yes");
+    const noButton = document.getElementById("no");
+    const backButton = document.getElementById("back");
+    const form = document.getElementById("date-form");
+    const dateInput = document.getElementById("new-date");
+    const timeInput = document.getElementById("new-time");
+    const submitButton = document.getElementById("submit-date");
+    const status = document.getElementById("status");
 
-      attempts++;
-      no.textContent = phrases[attempts % phrases.length];
-      hint.textContent = hints[(attempts - 1) % hints.length];
+    let sending = false;
 
-      no.style.transform = "none";
+    function localToday() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, "0");
+      const day = String(now.getDate()).padStart(2, "0");
 
-      const maxX = Math.max(0, arena.clientWidth - no.offsetWidth);
-      const maxY = Math.max(0, arena.clientHeight - no.offsetHeight);
-
-      // El botón se mueve dentro de la tarjeta y debajo del «Sí».
-      const minY = Math.min(76, maxY);
-      const previousX = no.offsetLeft;
-
-      // Alterna de lado para que el salto se note.
-      const x = previousX > maxX / 2
-        ? Math.random() * maxX * 0.25
-        : maxX * (0.75 + Math.random() * 0.25);
-
-      no.style.left = `${x}px`;
-      no.style.top = `${minY + Math.random() * (maxY - minY)}px`;
+      return `${year}-${month}-${day}`;
     }
 
-    no.addEventListener("pointerenter", event => {
-      if (event.pointerType === "mouse") escapeButton(event);
+    dateInput.min = localToday();
+
+    function showSection(name) {
+      Object.entries(sections).forEach(([key, section]) => {
+        section.hidden = key !== name;
+      });
+
+      status.textContent = "";
+      document.getElementById(`${name}-title`).focus();
+    }
+
+    function setBusy(busy, button) {
+      sending = busy;
+      document.querySelector(".card").setAttribute(
+        "aria-busy",
+        String(busy)
+      );
+
+      document.querySelectorAll("button").forEach(item => {
+        item.disabled = busy;
+      });
+
+      dateInput.disabled = busy;
+      timeInput.disabled = busy;
+
+      if (busy) {
+        button.dataset.originalText = button.textContent;
+        button.textContent = "Enviando… 💌";
+      } else if (button.dataset.originalText) {
+        button.textContent = button.dataset.originalText;
+      }
+    }
+
+    async function sendResponse(data, button) {
+      if (sending) return false;
+
+      if (FORMSPREE_URL.includes("TU_ID_AQUI")) {
+        status.textContent =
+          "Falta configurar el formulario: reemplaza TU_ID_AQUI por tu ID de Formspree.";
+        return false;
+      }
+
+      setBusy(true, button);
+      status.textContent = "Un segundito, enviando tu respuesta… 💌";
+
+      try {
+        const response = await fetch(FORMSPREE_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            invitada: "Indi",
+            ...data
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error("El servicio no confirmó el envío.");
+        }
+
+        return true;
+      } catch (error) {
+        status.textContent =
+          "No pudimos confirmar el envío. Revisa tu conexión e inténtalo otra vez 💗";
+
+        return false;
+      } finally {
+        setBusy(false, button);
+      }
+    }
+
+    noButton.addEventListener("click", () => {
+      dateInput.min = localToday();
+      showSection("alternative");
     });
 
-    no.addEventListener("pointerdown", escapeButton);
-    no.addEventListener("click", escapeButton);
+    backButton.addEventListener("click", () => {
+      showSection("invitation");
+    });
 
-    // También funciona al activar el botón con el teclado.
-    no.addEventListener("keydown", event => {
-      if (event.key === "Enter" || event.key === " ") {
-        escapeButton(event);
+    yesButton.addEventListener("click", async () => {
+      const sent = await sendResponse({
+        respuesta: "Sí, acepto la invitación",
+        fecha: "2026-11-19",
+        hora: "19:00",
+        zona_horaria: "America/Lima",
+        mensaje:
+          "¡Sí! Nos vemos el jueves 19 de noviembre de 2026 a las 7:00 p. m."
+      }, yesButton);
+
+      if (sent) {
+        showSection("accepted");
+        rainHearts();
       }
     });
 
-    window.addEventListener("resize", () => {
-      no.style.left = "50%";
-      no.style.top = "82px";
-      no.style.transform = "translateX(-50%)";
+    form.addEventListener("submit", async event => {
+      event.preventDefault();
+
+      if (sending) return;
+
+      timeInput.setCustomValidity("");
+      dateInput.min = localToday();
+
+      if (!form.reportValidity()) return;
+
+      // Se toman los valores antes de bloquear los campos.
+      const dateValue = dateInput.value;
+      const timeValue = timeInput.value;
+      const chosen = new Date(`${dateValue}T${timeValue}`);
+
+      if (
+        Number.isNaN(chosen.getTime()) ||
+        chosen.getTime() <= Date.now()
+      ) {
+        timeInput.setCustomValidity(
+          "Elige una fecha y hora que todavía no hayan pasado 💗"
+        );
+
+        timeInput.reportValidity();
+        return;
+      }
+
+      const formattedDate = chosen.toLocaleDateString("es-PE", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+      });
+
+      const formattedTime = chosen.toLocaleTimeString("es-PE", {
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true
+      });
+
+      const sent = await sendResponse({
+        respuesta: "El jueves no puedo; propongo otra fecha",
+        fecha: dateValue,
+        hora: timeValue,
+        zona_horaria:
+          Intl.DateTimeFormat().resolvedOptions().timeZone,
+        mensaje:
+          `Puedo el ${formattedDate} a las ${formattedTime}.`
+      }, submitButton);
+
+      if (sent) {
+        document.getElementById("chosen-date").textContent =
+          `${formattedDate} · ${formattedTime}`;
+
+        showSection("proposed");
+        rainHearts();
+      }
     });
 
-    yes.addEventListener("click", () => {
-      document.getElementById("invitation").hidden = true;
-      document.getElementById("accepted").hidden = false;
-      document.getElementById("success-title").focus();
+    [dateInput, timeInput].forEach(input => {
+      input.addEventListener("input", () => {
+        timeInput.setCustomValidity("");
+        status.textContent = "";
+      });
+    });
 
-      if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    function rainHearts() {
+      if (
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches
+      ) {
+        return;
+      }
 
-      const hearts = ["💗", "💕", "🌷", "✨", "🤍"];
+      const symbols = ["💗", "💕", "🌷", "✨", "🤍"];
 
-      for (let i = 0; i < 45; i++) {
+      for (let i = 0; i < 40; i++) {
         const heart = document.createElement("span");
+
         heart.className = "heart";
         heart.setAttribute("aria-hidden", "true");
-        heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+
+        heart.textContent =
+          symbols[Math.floor(Math.random() * symbols.length)];
+
         heart.style.left = `${Math.random() * 100}vw`;
         heart.style.fontSize = `${18 + Math.random() * 22}px`;
         heart.style.animationDuration = `${3 + Math.random() * 3}s`;
         heart.style.animationDelay = `${Math.random() * 2}s`;
+
         document.body.appendChild(heart);
-        heart.addEventListener("animationend", () => heart.remove());
+
+        heart.addEventListener("animationend", () => {
+          heart.remove();
+        });
       }
-    });
+    }
   </script>
 </body>
 </html>
