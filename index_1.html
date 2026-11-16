@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Indi, tengo una propuesta 💌</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      font-family: "Segoe UI", sans-serif;
+      color: #65384c;
+      background: #fff2f6;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: 24px 16px;
+      background:
+        radial-gradient(circle at 15% 15%, #ffd6e6, transparent 40%),
+        radial-gradient(circle at 90% 90%, #efdfff, transparent 40%),
+        #fff5f8;
+    }
+
+    .card {
+      width: min(100%, 500px);
+      padding: 38px 24px 24px;
+      text-align: center;
+      background: #ffffffd9;
+      border: 1px solid white;
+      border-radius: 32px;
+      box-shadow: 0 24px 80px #b4567b20;
+      position: relative;
+      z-index: 1;
+    }
+
+    .label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #b47490;
+    }
+
+    .emoji {
+      font-size: 70px;
+      margin: 22px 0 12px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    h1 {
+      font-family: Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(32px, 8vw, 44px);
+      line-height: 1.12;
+      margin: 14px 0;
+      color: #a43665;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.7;
+      margin: 16px 0;
+    }
+
+    .date {
+      display: inline-block;
+      background: #fff0f5;
+      border: 1px solid #f5d5e2;
+      border-radius: 16px;
+      padding: 12px 20px;
+      margin: 10px 0;
+      font-size: 14px;
+    }
+
+    .date strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #a43665;
+    }
+
+    .arena {
+      height: 155px;
+      position: relative;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      font: inherit;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 15px 22px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid #a43665;
+      outline-offset: 5px;
+    }
+
+    #yes {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      background: #d94d87;
+      box-shadow: 0 8px 24px #d94d8735;
+      white-space: nowrap;
+      transition: background .2s;
+    }
+
+    #yes:hover { background: #be356e; }
+
+    #no {
+      position: absolute;
+      top: 82px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #996079;
+      background: #f6eaf0;
+      white-space: nowrap;
+      font-size: 13px;
+      max-width: 100%;
+    }
+
+    .hint {
+      font-size: 12px;
+      color: #b18396;
+      min-height: 36px;
+      margin: 0;
+    }
+
+    .footer {
+      font-size: 12px;
+      color: #b18396;
+      margin-top: 24px;
+    }
+
+    .ticket {
+      margin-top: 24px;
+      padding: 22px 16px;
+      border: 1px dashed #df9db8;
+      background: #fff6fa;
+      border-radius: 18px;
+    }
+
+    .ticket span {
+      display: block;
+      font-size: 12px;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      color: #b47490;
+    }
+
+    .ticket strong {
+      font-size: 20px;
+      color: #a43665;
+    }
+
+    .heart {
+      position: fixed;
+      top: -50px;
+      pointer-events: none;
+      z-index: 5;
+      animation: fall linear forwards;
+    }
+
+    [hidden] { display: none !important; }
+
+    @keyframes float {
+      50% { transform: translateY(-9px) rotate(-4deg); }
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(115svh) rotate(300deg);
+        opacity: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <section id="invitation">
+      <div class="label">Una invitación para mi persona favorita</div>
+      <div class="emoji" aria-hidden="true">💌</div>
+
+      <h1>Indi, ¿me regalas<br>un ratito de tu jueves?</h1>
+
+      <p>
+        Me contaron que sales temprano del trabajo…<br>
+        y casualmente yo tengo muchas ganas de verte 🤭
+      </p>
+
+      <div class="date">
+        <strong>Jueves 19 de noviembre</strong>
+        Tú, yo y un plan bonito ✨
+      </div>
+
+      <p>¿Salimos?</p>
+
+      <div class="arena" id="arena">
+        <button id="yes" type="button">Sí, vamos 💗</button>
+        <button id="no" type="button">No 🙃</button>
+      </div>
+
+      <p class="hint" id="hint" aria-live="polite">
+        El botón de abajo anda un poquito tímido…
+      </p>
+
+      <div class="footer">Hecho con ganas de verte sonreír 🌷</div>
+    </section>
+
+    <section id="accepted" hidden aria-labelledby="success-title">
+      <div class="label">Tenemos una cita</div>
+      <div class="emoji" aria-hidden="true">🌷</div>
+
+      <h1 id="success-title" tabindex="-1">
+        Sabía que te iba<br>a encantar el plan 🤭
+      </h1>
+
+      <p>
+        Perfecto, <strong>paso por ti a las 7 de la noche.</strong>
+      </p>
+
+      <p>
+        Ponte bella… aunque esa parte ya la tienes resuelta 💗
+      </p>
+
+      <div class="ticket">
+        <span>PLAN OFICIAL</span>
+        <strong>Jueves 19/11 · 7:00 p. m.</strong>
+        <p>
+          Tú trae esa sonrisa que me gusta.<br>
+          Yo me encargo del resto ✨
+        </p>
+      </div>
+
+      <p class="footer">
+        Mándame una captura para presumir que me dijiste que sí 😌
+      </p>
+    </section>
+  </main>
+
+  <script>
+    const arena = document.getElementById("arena");
+    const no = document.getElementById("no");
+    const yes = document.getElementById("yes");
+    const hint = document.getElementById("hint");
+
+    const phrases = [
+      "No 🙃",
+      "Uy, por aquí no 🏃‍♀️",
+      "Casi, casi 🤭",
+      "Me dio nervios 🙈",
+      "Error: falta un sí 💗",
+      "No me atrapas 😌",
+      "El rosadito se ve lindo 👀"
+    ];
+
+    const hints = [
+      "Creo que ese botón tiene otros planes 🤭",
+      "Prometo que yo no corro tanto como ese botón.",
+      "El «Sí» sigue ahí, muy tranquilo y disponible 💗",
+      "Indi vs. un botón con complejo de atleta 🏃‍♀️",
+      "Bueno, al menos ya hicimos cardio 😂"
+    ];
+
+    let attempts = 0;
+    let lastMove = 0;
+
+    function escapeButton(event) {
+      if (event) event.preventDefault();
+
+      // Evita que varios eventos de un mismo toque lo muevan dos veces.
+      const now = performance.now();
+      if (now - lastMove < 100) return;
+      lastMove = now;
+
+      attempts++;
+      no.textContent = phrases[attempts % phrases.length];
+      hint.textContent = hints[(attempts - 1) % hints.length];
+
+      no.style.transform = "none";
+
+      const maxX = Math.max(0, arena.clientWidth - no.offsetWidth);
+      const maxY = Math.max(0, arena.clientHeight - no.offsetHeight);
+
+      // El botón se mueve dentro de la tarjeta y debajo del «Sí».
+      const minY = Math.min(76, maxY);
+      const previousX = no.offsetLeft;
+
+      // Alterna de lado para que el salto se note.
+      const x = previousX > maxX / 2
+        ? Math.random() * maxX * 0.25
+        : maxX * (0.75 + Math.random() * 0.25);
+
+      no.style.left = `${x}px`;
+      no.style.top = `${minY + Math.random() * (maxY - minY)}px`;
+    }
+
+    no.addEventListener("pointerenter", event => {
+      if (event.pointerType === "mouse") escapeButton(event);
+    });
+
+    no.addEventListener("pointerdown", escapeButton);
+    no.addEventListener("click", escapeButton);
+
+    // También funciona al activar el botón con el teclado.
+    no.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        escapeButton(event);
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      no.style.left = "50%";
+      no.style.top = "82px";
+      no.style.transform = "translateX(-50%)";
+    });
+
+    yes.addEventListener("click", () => {
+      document.getElementById("invitation").hidden = true;
+      document.getElementById("accepted").hidden = false;
+      document.getElementById("success-title").focus();
+
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      const hearts = ["💗", "💕", "🌷", "✨", "🤍"];
+
+      for (let i = 0; i < 45; i++) {
+        const heart = document.createElement("span");
+        heart.className = "heart";
+        heart.setAttribute("aria-hidden", "true");
+        heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+        heart.style.left = `${Math.random() * 100}vw`;
+        heart.style.fontSize = `${18 + Math.random() * 22}px`;
+        heart.style.animationDuration = `${3 + Math.random() * 3}s`;
+        heart.style.animationDelay = `${Math.random() * 2}s`;
+        document.body.appendChild(heart);
+        heart.addEventListener("animationend", () => heart.remove());
+      }
+    });
+  </script>
+</body>
+</html>
